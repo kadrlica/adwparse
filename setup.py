@@ -1,9 +1,15 @@
 import sys
 import os
-from setuptools import setup, find_packages
+from setuptools import setup
 
 if sys.version_info[:2] < (2, 7):
     raise RuntimeError("Python version >= 2.7 required.")
+
+import adwparse        
+
+# To install on lower versions of Python, add argparse, logging,
+# etc. to the install_requires
+# install_requires = ['setuptools','argparse','logging']
 
 NAME = 'adwparse'
 CLASSIFIERS = """\
@@ -21,20 +27,15 @@ Topic :: Scientific/Engineering
 URL = 'https://github.com/kadrlica/adwparse'
 DESCR = "Custom extension of the `argparse` module."
 LONG_DESCR = "See %s for more details."%URL
+VERSION = adwparse.__version__
 
 setup(
     name=NAME,
-    version='0.1.0',
+    version=VERSION,
     url=URL,
     author='Alex Drlica-Wagner',
     author_email='kadrlica@fnal.gov',
-    scripts = [],
-    install_requires=[
-        'setuptools',
-        'argparse',
-        'logging',
-    ],
-    packages=find_packages(),
+    py_modules=['adwparse'],
     package_data={},
     description=DESCR,
     long_description=LONG_DESCR,
